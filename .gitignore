@@ -1,0 +1,11 @@
+.vscode/*
+
+node_modules
+
+*.~
+.DS_Store
+
+/nft/artifacts
+/nft/cache
+/nft/.secret
+.env
