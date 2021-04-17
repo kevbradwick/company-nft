@@ -7,18 +7,23 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 
 contract Company is ERC721URIStorage {
+
+  // maintain an internal counter for token id's
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
   // maps uk company numbers to token uuid
   mapping(string => uint256) _companyNumberTokenMap;
 
+  // event that is emitted when a new uk company token is minted
+  event UKCompanyMinted(string companyNumber, uint256 tokenId);
+
   constructor() ERC721("UKCompany", "UKCO") {}
 
   /**
    * Register a new company to an account
    */
-  function registerCompany(address to_, string memory companyNumber_, string memory tokenURI_) external returns(uint256) {
+  function registerCompany(address to_, string memory companyNumber_, string memory tokenURI_) external {
     // the contract's unique id for the token
     _tokenIds.increment();
     uint256 tokenId = _tokenIds.current();
@@ -32,6 +37,6 @@ contract Company is ERC721URIStorage {
 
     _companyNumberTokenMap[companyNumber_] = tokenId;
 
-    return tokenId;
+    emit UKCompanyMinted(companyNumber_, tokenId);
   }
 }

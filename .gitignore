@@ -9,3 +9,7 @@ node_modules
 /nft/cache
 /nft/.secret
 .env
+.cache
+.next
+/dist
+/out
