@@ -1,8 +1,11 @@
 import React, {PureComponent} from "react";
+import Layout from "../components/layout";
 
 class IndexPage extends PureComponent {
   render() {
-    return <h1>Hello World</h1>
+    return <Layout>
+      <h1 className="govuk-heading-xl">Hello World</h1>
+    </Layout>
   }
 }
 
