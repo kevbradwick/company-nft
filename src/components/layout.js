@@ -10,7 +10,7 @@ export default function Layout({
         <title>{title}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta name="theme-color" content="#0b0c0c" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
 
         <link rel="shortcut icon" sizes="16x16 32x32 48x48" href="/alphagov/assets/images/favicon.ico" type="image/x-icon" />
         <link rel="mask-icon" href="/alphagov/assets/images/govuk-mask-icon.svg" color="#0b0c0c" />
@@ -20,6 +20,8 @@ export default function Layout({
         <link rel="apple-touch-icon" href="/alphagov/assets/images/govuk-apple-touch-icon.png" />
         <link rel="stylesheet" type="text/css" href="/alphagov/govuk-frontend-3.11.0.min.css" media="all" />
         <meta property="og:image" content="/alphagov/assets/images/govuk-opengraph-image.png" />
+
+        <script type="text/javascript" src="/alphagov/govuk-frontend-3.11.0.min.js"></script>
       </Head>
 
       <header className="govuk-header">
@@ -36,7 +38,7 @@ export default function Layout({
           </div>
         </div>
       </header>
-    
+
       <div className="govuk-width-container">
         <main className="govuk-main-wrapper" id="main-content">
           {children}
