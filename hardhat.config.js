@@ -2,12 +2,19 @@
 require('dotenv').config();
 require('@nomiclabs/hardhat-ethers');
 require('@nomiclabs/hardhat-waffle');
+require('hardhat-abi-exporter');
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
   defaultNetwork: 'localhost',
+  abiExporter: {
+    path: './nft/abi',
+    clear: true,
+    flat: true,
+    spacing: 2
+  },
   networks: {
     localhost: {
       url: "http://127.0.0.1:8545"
@@ -18,13 +25,13 @@ module.exports = {
       url: "https://data-seed-prebsc-1-s1.binance.org:8545",
       chainId: 97,
       gasPrice: 20000000000,
-      accounts: {mnemonic: process.env.MNEMONIC}
+      accounts: { mnemonic: process.env.MNEMONIC }
     },
     mainnet: {
       url: "https://bsc-dataseed.binance.org/",
       chainId: 56,
       gasPrice: 20000000000,
-      accounts: {mnemonic: process.env.MNEMONIC}
+      accounts: { mnemonic: process.env.MNEMONIC }
     }
   },
   solidity: {

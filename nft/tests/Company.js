@@ -27,4 +27,29 @@ describe("Company", () => {
     await token.registerCompany(account1.address, "00006400", "");
     await expect(token.registerCompany(account1.address, "00006400", "")).to.be.revertedWith("Company is already registered");
   });
+
+  it("emits an event when company is minted", async () => {
+    const expectEvent = {
+      tokenId: "1",
+      companyNumber: "00006400",
+      tokenURI: ""
+    };
+
+    await expect(token.registerCompany(account1.address, "00006400", ""))
+      .to.emit(token, "UKCompanyMinted");
+  });
+
+  describe("getTokensForOwner", () => {
+    it("returns the list of company tokens for an account", async () => {
+      await token.registerCompany(account1.address, "00006400", "url1");
+      await token.registerCompany(account1.address, "00006401", "url2");
+
+      const tokens = await token.getTokensForOwner(account1.address);
+
+      expect(tokens).to.have.lengthOf(2);
+      expect(tokens[0]).to.have.property('tokenId');
+      expect(tokens[0]).to.have.property('companyNumber', '00006400');
+      expect(tokens[0]).to.have.property('tokenURI', 'url1');
+    });
+  });
 });

@@ -5,7 +5,10 @@ import {ConnectionRejectedError, UseWalletProvider} from "@binance-chain/bsc-use
 const connectors = {
   bsc: {
     web3ReactConnector() {
-      return new BscConnector({supportedChainIds: [56, 97]})
+      // chain id's
+      // 56 (Mainnet) https://bsc-dataseed.binance.org/ | https://bscscan.com
+      // 97 (Testnet) https://data-seed-prebsc-1-s1.binance.org:8545/ | https://testnet.bscscan.com
+      return new BscConnector({supportedChainIds: [97]})
     },
     handleActivationError(err) {
       if (err instanceof UserRejectedRequestError) {
@@ -16,7 +19,7 @@ const connectors = {
 }
 
 const App = ({Component, pageProps}) => {
-  return <UseWalletProvider connectors={connectors}>
+  return <UseWalletProvider connectors={connectors} chainId={97}>
       <Component {...pageProps} />
     </UseWalletProvider>
 }

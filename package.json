@@ -7,7 +7,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "hardhat test"
+    "test": "hardhat test --network hardhat",
+    "deploy:localhost": "hardhat run --network localhost nft/scripts/deploy.js",
+    "deploy:testnet": "hardhat run --network testnet nft/scripts/deploy.js",
+    "node": "hardhat node"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +23,8 @@
     "dotenv": "^8.2.0",
     "ethereum-waffle": "^3.3.0",
     "ethers": "^5.1.0",
-    "hardhat": "^2.2.0"
+    "hardhat": "^2.2.0",
+    "hardhat-abi-exporter": "^2.2.1"
   },
   "dependencies": {
     "@binance-chain/bsc-connector": "^1.0.0",
