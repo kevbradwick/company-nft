@@ -112,7 +112,7 @@ const IndexScreen = () => {
       </thead>
       <tbody className="govuk-table__body">
         {tokens.map( (token, i) => {
-          return (<tr className="govuk-table__row" key={token.tokenID}>
+          return (<tr className="govuk-table__row" key={i}>
               <td className="govuk-table__cell" key={`col-1-${i}`}>{token.companyNumber}</td>
               <td className="govuk-table__cell" key={`col-2-${i}`}>{token.tokenId.toNumber()}</td>
               <td className="govuk-table__cell" key={`col-3-${i}`}>{token.tokenURI}</td>
